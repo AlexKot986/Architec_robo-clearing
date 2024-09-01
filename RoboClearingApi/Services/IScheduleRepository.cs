@@ -1,6 +1,8 @@
-﻿namespace RoboClearingApi.Services;
+﻿using RoboClearingApi.Models.Domain;
 
-public class IScheduleRepository
+namespace RoboClearingApi.Services;
+
+public interface IScheduleRepository : IRepository<Schedule, int>
 {
     
 }

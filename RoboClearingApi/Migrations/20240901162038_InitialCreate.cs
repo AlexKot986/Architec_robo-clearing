@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -94,9 +95,9 @@ namespace RoboClearingApi.Migrations
                     RoomId = table.Column<int>(type: "integer", nullable: false),
                     RobotId = table.Column<int>(type: "integer", nullable: false),
                     clearing_id = table.Column<int>(type: "integer", maxLength: 20, nullable: false),
-                    week_day_id = table.Column<int>(type: "integer", nullable: false),
-                    start_clearing = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    end_clearing = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    week_day_id = table.Column<List<int>>(type: "integer[]", nullable: false),
+                    start_clearing = table.Column<TimeOnly>(type: "time without time zone", nullable: false),
+                    end_clearing = table.Column<TimeOnly>(type: "time without time zone", nullable: false)
                 },
                 constraints: table =>
                 {

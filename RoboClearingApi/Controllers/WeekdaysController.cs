@@ -1,12 +1,26 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RoboClearingApi.Services.NotImpl;
+using Swashbuckle.AspNetCore.Annotations;
 
-namespace RoboClearingApi.Controllers;
-
-public class WeekdaysController : Controller
+namespace RoboClearingApi.Controllers
 {
-    // GET
-    public IActionResult Index()
+    [Route("api/[controller]")]
+    [ApiController]
+    public class WeekdaysController(WeekDayRepository _weekDayRepository) : ControllerBase
     {
-        return View();
+        [HttpPost("create")]
+        [SwaggerOperation(OperationId = "WeekDaysCreate")]
+        public async Task<ActionResult<int>> Create()
+        {
+            try
+            {
+                  return Ok(await _weekDayRepository.CreateDays());
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+            
+        }
     }
 }

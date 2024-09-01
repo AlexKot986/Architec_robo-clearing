@@ -5,6 +5,7 @@ using RoboClearingApi.Contexts;
 using RoboClearingApi.Services;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using RoboClearingApi.Services.Impl;
+using RoboClearingApi.Services.NotImpl;
 
 namespace RoboClearingApi
 {
@@ -23,6 +24,9 @@ namespace RoboClearingApi
             builder.Services.AddScoped<IRoboStatusRepository, RoboStatusRepository>();
             builder.Services.AddScoped<IRobotRepository, RobotRepository>();
             builder.Services.AddScoped<IRoomRepository, RoomRepository>();
+            builder.Services.AddScoped<IScheduleRepository, ScheduleRepository>();
+            builder.Services.AddScoped(typeof(WeekDayRepository));
+            builder.Services.AddScoped(typeof(TypeOfClearingRepository));
 
             builder.Services.AddDbContext<RoboClearingPostgreSqlDBContext>(options =>
             {

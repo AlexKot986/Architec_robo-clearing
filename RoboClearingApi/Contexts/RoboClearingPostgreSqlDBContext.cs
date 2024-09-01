@@ -73,7 +73,7 @@ namespace RoboClearingApi.Contexts
                 entity.Property(sc => sc.TypeOfClearingId).HasMaxLength(20).HasColumnName("clearing_id");
 
                 entity.HasMany(sc => sc.WeekDayList);
-                entity.Property(sc => sc.WeekDayId).HasColumnName("week_day_id");
+                entity.Property(sc => sc.WeekDaysId).HasColumnName("week_day_id");
 
                 entity.Property(sc => sc.StartClearing).HasColumnName("start_clearing");
                 entity.Property(sc => sc.EndClearing).HasColumnName("end_clearing");

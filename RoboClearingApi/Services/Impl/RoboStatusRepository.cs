@@ -17,7 +17,7 @@ namespace RoboClearingApi.Services.Impl
 
         public async Task<int> Add(RoboStatus roboStatus)
         {
-            var status = await _dbContext.RoboStatuses.FindAsync(roboStatus.Title);
+            var status = await _dbContext.RoboStatuses.FirstOrDefaultAsync(rs => rs.Title == roboStatus.Title);
             if (status != null)
                 throw new Exception("Title is already exist!");
             await _dbContext.RoboStatuses.AddAsync(roboStatus);

@@ -14,9 +14,9 @@ namespace RoboClearingApi.Models.Domain
         [ForeignKey("TypeOfClearing")]
         public int TypeOfClearingId { get; set; }
         [ForeignKey("WeekDay")]
-        public int WeekDayId { get; set; }
-        public DateTime StartClearing { get; set; }
-        public DateTime EndClearing { get; set; }
+        public List<int> WeekDaysId { get; set; }
+        public TimeOnly StartClearing { get; set; }
+        public TimeOnly EndClearing { get; set; }
 
         public virtual Room Room { get; set; }
         public virtual Robot Robot { get; set; }
