@@ -22,11 +22,11 @@ namespace RoboClearingApi.Controllers
 
         [HttpPost("add")]
         [SwaggerOperation(OperationId = "RobostatusAdd")]
-        public ActionResult<int> Add([FromBody] RoboStatusRequest roboStatusRequest)
+        public async Task<ActionResult<int>> Add([FromBody] RoboStatusRequest roboStatusRequest)
         {
             try
             {
-                return Ok(_roboStatusRepository.Add(new RoboStatus
+                return Ok(await _roboStatusRepository.Add(new RoboStatus
                 {
                     Title = roboStatusRequest.Title
                 }));
@@ -39,9 +39,9 @@ namespace RoboClearingApi.Controllers
 
         [HttpGet("get-all")]
         [SwaggerOperation(OperationId = "RobostatusGetAll")]
-        public ActionResult<IEnumerable<RoboStatusResponce>> GetAll()
+        public async Task<ActionResult<IEnumerable<RoboStatusResponce>>> GetAll()
         {         
-            var roboStatuses = _roboStatusRepository.GetAll();  
+            var roboStatuses = await _roboStatusRepository.GetAll();  
             return Ok(roboStatuses.Select(rs => new RoboStatusResponce
             {
                 Id = rs.Id,
@@ -51,11 +51,11 @@ namespace RoboClearingApi.Controllers
 
         [HttpGet("get/robostatus{id}")]
         [SwaggerOperation(OperationId = "RobostatusGetById")]
-        public ActionResult<RoboStatusResponce> GetById(int id)
+        public async Task<ActionResult<RoboStatusResponce>> GetById(int id)
         {
             try
             {
-                var roboStatus = _roboStatusRepository.GetById(id);
+                var roboStatus = await _roboStatusRepository.GetById(id);
                 return Ok(new RoboStatusResponce { Id = roboStatus.Id, Title = roboStatus.Title });
             }
             catch (Exception ex)

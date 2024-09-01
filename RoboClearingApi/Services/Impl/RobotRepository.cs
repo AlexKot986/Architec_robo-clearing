@@ -12,39 +12,35 @@ namespace RoboClearingApi.Services.Impl
             _dbContext = dbContext;
         }
 
-        public int Add(Robot robot)
+        public async Task<int> Add(Robot robot)
         {
-            _dbContext.Robots.Add(robot);
-            return _dbContext.SaveChanges();
+            await _dbContext.Robots.AddAsync(robot);
+            return await _dbContext.SaveChangesAsync();
         }
 
-        public int Delete(int id)
+        public async Task<int> Delete(int id)
         {
-            var robot = GetById(id);
-
+            var robot = await _dbContext.Robots.FindAsync(id) ?? throw new Exception($"id:{id} Not Found!");
             _dbContext.Robots.Remove(robot);
-            return _dbContext.SaveChanges();
+            return await _dbContext.SaveChangesAsync();
         }
 
-        public IEnumerable<Robot> GetAll()
+        public async Task<IEnumerable<Robot>> GetAll()
         {
-            return _dbContext.Robots;
+            return await Task.Run(() => _dbContext.Robots);
         }
 
-        public Robot GetById(int id)
+        public async Task<Robot> GetById(int id)
         {
-            var robot = _dbContext.Robots.FirstOrDefault(r => r.Id == id) ?? throw new Exception($"id:{id} Not Found!");
-            return robot;
+            return await _dbContext.Robots.FindAsync(id) ?? throw new Exception($"id:{id} Not Found!");
         }
 
-        public int UpDate(Robot robot)
+        public async Task<int> UpDate(Robot robot)
         {
-            var check = GetById(robot.Id);
+            var check = await _dbContext.Robots.FindAsync(robot.Id) ?? throw new Exception($"id:{robot.Id} Not Found!");
             check.StatusId = robot.StatusId;
             check.Name = robot.Name;
-
-            _dbContext.Robots.Update(check);
-            return _dbContext.SaveChanges();
+            return await _dbContext.SaveChangesAsync();
         }
     }
 }

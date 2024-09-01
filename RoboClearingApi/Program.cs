@@ -22,6 +22,7 @@ namespace RoboClearingApi
 
             builder.Services.AddScoped<IRoboStatusRepository, RoboStatusRepository>();
             builder.Services.AddScoped<IRobotRepository, RobotRepository>();
+            builder.Services.AddScoped<IRoomRepository, RoomRepository>();
 
             builder.Services.AddDbContext<RoboClearingPostgreSqlDBContext>(options =>
             {

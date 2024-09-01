@@ -15,37 +15,38 @@ namespace RoboClearingApi.Services.Impl
             _dbContext = dbContext;
         }
 
-        public int Add(RoboStatus roboStatus)
+        public async Task<int> Add(RoboStatus roboStatus)
         {
-            var status = _dbContext.RoboStatuses.FirstOrDefault(rs => rs.Title == roboStatus.Title);
+            var status = await _dbContext.RoboStatuses.FindAsync(roboStatus.Title);
             if (status != null)
                 throw new Exception("Title is already exist!");
-            _dbContext.RoboStatuses.Add(roboStatus);
-            return _dbContext.SaveChanges();          
+            await _dbContext.RoboStatuses.AddAsync(roboStatus);
+            return await _dbContext.SaveChangesAsync();          
         }
 
-        public int Delete(int id)
+        public async Task<int> Delete(int id)
         {
-            var roboStatus = GetById(id);
+            var roboStatus = await _dbContext.RoboStatuses.FindAsync(id) ?? throw new Exception($"id:{id} Not Found!");
             
             _dbContext.RoboStatuses.Remove(roboStatus);
-            return _dbContext.SaveChanges();           
+            return await _dbContext.SaveChangesAsync();           
         }
 
-        public IEnumerable<RoboStatus> GetAll()
+        public async Task<IEnumerable<RoboStatus>> GetAll()
         {
-            return _dbContext.RoboStatuses;        }
-
-        public RoboStatus GetById(int id)
-        {
-            var roboStatus = _dbContext.RoboStatuses.FirstOrDefault(rs => rs.Id == id) ?? throw new Exception($"id:{id} Not Found!");
-            return roboStatus;
+            return await Task.Run(() => _dbContext.RoboStatuses);
         }
 
-        public int UpDate(RoboStatus roboStatus)
+        public async Task<RoboStatus> GetById(int id)
         {
-            _dbContext.RoboStatuses.Update(roboStatus);
-            return _dbContext.SaveChanges();
+            return await _dbContext.RoboStatuses.FindAsync(id) ?? throw new Exception($"id:{id} Not Found!");
+        }
+
+        public async Task<int> UpDate(RoboStatus roboStatus)
+        {
+            var status = await _dbContext.RoboStatuses.FindAsync(roboStatus.Id) ?? throw new Exception($"id:{roboStatus.Id} Not Found!");
+            status.Title = roboStatus.Title;
+            return await _dbContext.SaveChangesAsync();
         }
     }
 }

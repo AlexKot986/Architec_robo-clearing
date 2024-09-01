@@ -22,9 +22,9 @@ namespace RoboClearingApi.Controllers
 
         [HttpPost("add")]
         [SwaggerOperation(OperationId = "RobotAdd")]
-        public ActionResult<int> Add([FromBody] RobotAddRequest robotAddRequest)
+        public async Task<ActionResult<int>> Add([FromBody] RobotAddRequest robotAddRequest)
         {
-            return Ok(_robotRepository.Add(new Robot
+            return Ok(await _robotRepository.Add(new Robot
             {
                 StatusId = 1,
                 Model = robotAddRequest.Model,
@@ -34,9 +34,9 @@ namespace RoboClearingApi.Controllers
 
         [HttpGet("get-all")]
         [SwaggerOperation(OperationId = "RobotGetAll")]
-        public ActionResult<IEnumerable<RobotResponce>> GetAll()
+        public async Task<ActionResult<IEnumerable<RobotResponce>>> GetAll()
         {
-            var robots = _robotRepository.GetAll();
+            var robots = await _robotRepository.GetAll();
             return Ok(robots.Select(r => new RobotResponce
             {
                 Id = r.Id,
@@ -48,11 +48,11 @@ namespace RoboClearingApi.Controllers
 
         [HttpGet("get/robot{id}")]
         [SwaggerOperation(OperationId = "RobotGetById")]
-        public ActionResult<RobotResponce> GetById(int id)
+        public async Task<ActionResult<RobotResponce>> GetById(int id)
         {
             try
             {
-                var robot = _robotRepository.GetById(id);
+                var robot = await _robotRepository.GetById(id);
                 return Ok(new RobotResponce 
                 { 
                     Id = robot.Id, 
@@ -69,11 +69,11 @@ namespace RoboClearingApi.Controllers
 
         [HttpDelete("delete")]
         [SwaggerOperation(OperationId = "RobotDelete")]
-        public ActionResult<int> Delete(int id)
+        public async Task<ActionResult<int>> Delete(int id)
         {
             try
             {
-                return Ok(_robotRepository.Delete(id));
+                return Ok(await _robotRepository.Delete(id));
             }
             catch (Exception ex) 
             { 
@@ -83,11 +83,11 @@ namespace RoboClearingApi.Controllers
 
         [HttpPut("update")]
         [SwaggerOperation(OperationId = "RobotUpdate")]
-        public ActionResult<int> UpDate([FromBody] RobotUpdateRequest robotUpdateRequest)
+        public async Task<ActionResult<int>> UpDate([FromBody] RobotUpdateRequest robotUpdateRequest)
         {
             try
             {
-                return Ok(_robotRepository.UpDate(new Robot
+                return Ok(await _robotRepository.UpDate(new Robot
                 {
                     Id = robotUpdateRequest.Id,
                     StatusId = robotUpdateRequest.StatusId,
