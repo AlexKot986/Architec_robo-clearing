@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="RoboClearingApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:RoboClearingApp"
+    Shell.FlyoutBehavior="Disabled"
+    Title="RoboClearingApp">
+
+    <TabBar>
+        <Tab
+            Title="Robots">
+            <ShellContent           
+                Title="Home"
+                ContentTemplate="{DataTemplate local:RobotsPage}"
+                Route="Robots" />
+        </Tab>
+        <Tab
+            Title="Rooms">
+            <ShellContent           
+                Title="Home"
+                ContentTemplate="{DataTemplate local:RoomsPage}"
+                Route="RoomsPage" />
+        </Tab>
+        <Tab
+            Title="Schedules">
+            <ShellContent           
+                 Title="Home"
+                 ContentTemplate="{DataTemplate local:SchedulesPage}"
+                Route="SchedulePage" />
+        </Tab>
+    </TabBar>
+
+
+
+
+</Shell>
