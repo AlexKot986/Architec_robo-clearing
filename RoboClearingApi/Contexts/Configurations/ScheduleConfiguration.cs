@@ -4,7 +4,7 @@ using RoboClearingApi.Models.Domain;
 
 namespace RoboClearingApi.Contexts.Configurations;
 
-public class SchaduleConfiguration : IEntityTypeConfiguration<Schedule>
+public class ScheduleConfiguration : IEntityTypeConfiguration<Schedule>
 {
     public void Configure(EntityTypeBuilder<Schedule> builder)
     {
