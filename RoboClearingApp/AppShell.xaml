@@ -8,30 +8,25 @@
     Title="RoboClearingApp">
 
     <TabBar>
-        <Tab
-            Title="Robots">
-            <ShellContent           
+        <Tab Title="Robots">
+            <ShellContent
                 Title="Home"
-                ContentTemplate="{DataTemplate local:RobotsPage}"
-                Route="Robots" />
+                ContentTemplate="{DataTemplate local:RobotPage}"
+                Route="RobotPage" />
         </Tab>
-        <Tab
-            Title="Rooms">
-            <ShellContent           
-                Title="Home"
-                ContentTemplate="{DataTemplate local:RoomsPage}"
-                Route="RoomsPage" />
+        <Tab Title="Rooms">
+            <ShellContent
+                Title="Rooms"
+                ContentTemplate="{DataTemplate local:RoomPage}"
+                Route="RoomPage" /> 
         </Tab>
-        <Tab
-            Title="Schedules">
-            <ShellContent           
-                 Title="Home"
-                 ContentTemplate="{DataTemplate local:SchedulesPage}"
+        <Tab Title="Schedeles">
+            <ShellContent
+                Title="Rooms"
+                ContentTemplate="{DataTemplate local:SchedulePage}"
                 Route="SchedulePage" />
         </Tab>
     </TabBar>
-
-
-
+    
 
 </Shell>

@@ -63,20 +63,20 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\RoboClearingDesctop.Data\RoboClearingDesctop.Data.csproj" />
+	  <ProjectReference Include="..\RoboClearingClient\RoboClearingClient.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Pages\RobotsPage.xaml">
+	  <MauiXaml Update="RobotCreatePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\RoomsPage.xaml">
+	  <MauiXaml Update="RobotPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Schedules.xaml">
+	  <MauiXaml Update="RoomPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\SchedulesPage.xaml">
+	  <MauiXaml Update="SchedulePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

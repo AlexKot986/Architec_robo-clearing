@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RoboClearingApp.RobotPage"
+             Title="RobotPage">
+    <VerticalStackLayout Padding="20">
+
+        <HorizontalStackLayout Padding="10" HorizontalOptions="Center" Spacing="120">
+            <Label 
+            Text="ROBOTS:"
+            VerticalOptions="Center" 
+            FontSize="32"
+            HorizontalOptions="Center" />
+            <Button
+            HorizontalOptions="End"
+            Text="get-all"
+            Clicked="GetAllBtn"/>
+        </HorizontalStackLayout>
+
+        <Grid Margin="50" ColumnSpacing="10" Padding="10" HorizontalOptions="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Text="Id"/>
+            <Label Grid.Column="1" Text="StatusId"/>
+            <Label Grid.Column="2" Text="Model"/>
+            <Label Grid.Column="3" Text="Name"/>
+        </Grid>
+
+        <ListView HorizontalOptions="Center"
+        x:Name="listView"
+        ItemsSource="{Binding RobotResponce}"
+        ItemSelected="robot_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Grid ColumnSpacing="10" Padding="10" HorizontalOptions="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="{Binding Id}"/>
+                                <Label Grid.Column="1" Text="{Binding Status}"/>
+                                <Label Grid.Column="2" Text="{Binding Model}"/>
+                                <Label Grid.Column="3" Text="{Binding Name}"/>
+                            </Grid>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <HorizontalStackLayout Margin="0,100,0,0" HorizontalOptions="Center" Spacing="180">
+            <Button Text="update" Clicked="UpdateBtn"/>
+            <Button Text="create" Clicked="CreateBtn"/>
+        </HorizontalStackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>
