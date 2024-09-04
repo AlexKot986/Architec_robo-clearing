@@ -24,8 +24,8 @@ namespace RoboClearingApi.Controllers
         {
             return Ok(await _scheduleRepository.Add(new Schedule
             {
-                Room = scheduleAddRequest.Room,
-                Robot = scheduleAddRequest.Robot,
+                RoomId = scheduleAddRequest.RoomId,
+                RobotId = scheduleAddRequest.RobotId,
                 Type = scheduleAddRequest.Type,
                 WeekDays = scheduleAddRequest.WeekDays,
                 Start = scheduleAddRequest.Start,
@@ -41,8 +41,8 @@ namespace RoboClearingApi.Controllers
             return Ok(schedules.Select(s => new ScheduleResponce
             {
                 Id = s.Id,
-                Room = s.Room,
-                Robot = s.Robot,
+                RoomId = s.RoomId,
+                RobotId = s.RobotId,
                 Type = s.Type,
                 WeekDays = s.WeekDays,
                 Start = s.Start,
@@ -60,8 +60,8 @@ namespace RoboClearingApi.Controllers
                 return Ok(new ScheduleResponce
                 {
                     Id = schedule.Id,
-                    Room = schedule.Room,
-                    Robot = schedule.Robot,
+                    RoomId = schedule.RoomId,
+                    RobotId = schedule.RobotId,
                     Type = schedule.Type,
                     WeekDays = schedule.WeekDays,
                     Start = schedule.Start,
@@ -97,8 +97,8 @@ namespace RoboClearingApi.Controllers
                 return Ok(await _scheduleRepository.UpDate(new Schedule
                 {
                     Id = scheduleUpdateRequest.Id,
-                    Room = scheduleUpdateRequest.Room,
-                    Robot = scheduleUpdateRequest.Robot,
+                    RoomId = scheduleUpdateRequest.RoomId,
+                    RobotId = scheduleUpdateRequest.RobotId,
                     Type = scheduleUpdateRequest.Type,
                     WeekDays = scheduleUpdateRequest.WeekDays,
                     Start = scheduleUpdateRequest.Start,
