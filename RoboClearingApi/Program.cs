@@ -1,11 +1,8 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using RoboClearingApi.Contexts;
 using RoboClearingApi.Services;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+
 using RoboClearingApi.Services.Impl;
-using RoboClearingApi.Services.NotImpl;
+
 
 namespace RoboClearingApi
 {
@@ -20,18 +17,12 @@ namespace RoboClearingApi
             {
                 configure.EnableAnnotations();
             });
-
-            builder.Services.AddScoped<IRoboStatusRepository, RoboStatusRepository>();
+            
             builder.Services.AddScoped<IRobotRepository, RobotRepository>();
             builder.Services.AddScoped<IRoomRepository, RoomRepository>();
             builder.Services.AddScoped<IScheduleRepository, ScheduleRepository>();
-            builder.Services.AddScoped(typeof(WeekDayRepository));
-            builder.Services.AddScoped(typeof(TypeOfClearingRepository));
 
-            builder.Services.AddDbContext<RoboClearingPostgreSqlDBContext>(options =>
-            {
-                options.UseNpgsql();
-            });
+            builder.Services.AddDbContext<RoboClearingPostgreSqlDBContext>();
         
             var app = builder.Build();
 

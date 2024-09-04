@@ -24,12 +24,12 @@ namespace RoboClearingApi.Controllers
         {
             return Ok(await _scheduleRepository.Add(new Schedule
             {
-                RoomId = scheduleAddRequest.RoomId,
-                RobotId = scheduleAddRequest.RobotId,
-                TypeOfClearingId = scheduleAddRequest.TypeOfClearingId,
-                WeekDaysId = scheduleAddRequest.WeekDaysId,
-                StartClearing = scheduleAddRequest.StartClearing,
-                EndClearing = scheduleAddRequest.EndClearing
+                Room = scheduleAddRequest.Room,
+                Robot = scheduleAddRequest.Robot,
+                Type = scheduleAddRequest.Type,
+                WeekDays = scheduleAddRequest.WeekDays,
+                Start = scheduleAddRequest.Start,
+                End = scheduleAddRequest.End
             }));
         }
 
@@ -41,12 +41,12 @@ namespace RoboClearingApi.Controllers
             return Ok(schedules.Select(s => new ScheduleResponce
             {
                 Id = s.Id,
-                RoomId = s.RoomId,
-                RobotId = s.RobotId,
-                TypeOfClearingId = s.TypeOfClearingId,
-                WeekDaysId = s.WeekDaysId,
-                StartClearing = s.StartClearing,
-                EndClearing = s.EndClearing
+                Room = s.Room,
+                Robot = s.Robot,
+                Type = s.Type,
+                WeekDays = s.WeekDays,
+                Start = s.Start,
+                End = s.End
             }));
         }
 
@@ -60,12 +60,12 @@ namespace RoboClearingApi.Controllers
                 return Ok(new ScheduleResponce
                 {
                     Id = schedule.Id,
-                    RoomId = schedule.RoomId,
-                    RobotId = schedule.RobotId,
-                    TypeOfClearingId = schedule.TypeOfClearingId,
-                    WeekDaysId = schedule.WeekDaysId,
-                    StartClearing = schedule.StartClearing,
-                    EndClearing = schedule.EndClearing
+                    Room = schedule.Room,
+                    Robot = schedule.Robot,
+                    Type = schedule.Type,
+                    WeekDays = schedule.WeekDays,
+                    Start = schedule.Start,
+                    End = schedule.End
                 });
             }
             catch (Exception ex)
@@ -97,12 +97,12 @@ namespace RoboClearingApi.Controllers
                 return Ok(await _scheduleRepository.UpDate(new Schedule
                 {
                     Id = scheduleUpdateRequest.Id,
-                    RoomId = scheduleUpdateRequest.RoomId,
-                    RobotId = scheduleUpdateRequest.RobotId,
-                    TypeOfClearingId = scheduleUpdateRequest.TypeOfClearingId,
-                    WeekDaysId = scheduleUpdateRequest.WeekDaysId,
-                    StartClearing = scheduleUpdateRequest.StartClearing,
-                    EndClearing = scheduleUpdateRequest.EndClearing
+                    Room = scheduleUpdateRequest.Room,
+                    Robot = scheduleUpdateRequest.Robot,
+                    Type = scheduleUpdateRequest.Type,
+                    WeekDays = scheduleUpdateRequest.WeekDays,
+                    Start = scheduleUpdateRequest.Start,
+                    End = scheduleUpdateRequest.End
                 }));
             }
             catch (Exception ex)

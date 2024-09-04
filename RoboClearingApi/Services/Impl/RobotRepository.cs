@@ -38,7 +38,7 @@ namespace RoboClearingApi.Services.Impl
         public async Task<int> UpDate(Robot robot)
         {
             var check = await _dbContext.Robots.FindAsync(robot.Id) ?? throw new Exception($"id:{robot.Id} Not Found!");
-            check.StatusId = robot.StatusId;
+            check.Status = robot.Status;
             check.Name = robot.Name;
             return await _dbContext.SaveChangesAsync();
         }

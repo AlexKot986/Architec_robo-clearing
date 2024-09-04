@@ -26,7 +26,7 @@ namespace RoboClearingApi.Controllers
         {
             return Ok(await _robotRepository.Add(new Robot
             {
-                StatusId = 1,
+                Status = RoboStatus.Connecting,
                 Model = robotAddRequest.Model,
                 Name = robotAddRequest.Name
             }));
@@ -40,7 +40,7 @@ namespace RoboClearingApi.Controllers
             return Ok(robots.Select(r => new RobotResponce
             {
                 Id = r.Id,
-                StatusId = r.StatusId,
+                Status = r.Status,
                 Model = r.Model,
                 Name = r.Name
             }));
@@ -56,7 +56,7 @@ namespace RoboClearingApi.Controllers
                 return Ok(new RobotResponce 
                 { 
                     Id = robot.Id, 
-                    StatusId = robot.StatusId,
+                    Status = robot.Status,
                     Model = robot.Model,
                     Name = robot.Name
                 });
@@ -90,7 +90,7 @@ namespace RoboClearingApi.Controllers
                 return Ok(await _robotRepository.UpDate(new Robot
                 {
                     Id = robotUpdateRequest.Id,
-                    StatusId = robotUpdateRequest.StatusId,
+                    Status = robotUpdateRequest.Status,
                     Name = robotUpdateRequest.Name
                 }));
             }

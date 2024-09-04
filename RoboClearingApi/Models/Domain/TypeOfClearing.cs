@@ -1,10 +1,8 @@
 ﻿namespace RoboClearingApi.Models.Domain
 {
-    public class TypeOfClearing
+    public enum TypeOfClearing
     {
-        public int Id { get; set; }
-        public string Title { get; set; }
-
-        //public virtual List<Schedule> Schedules { get; set;}
+        Dry,
+        Wet
     }
 }

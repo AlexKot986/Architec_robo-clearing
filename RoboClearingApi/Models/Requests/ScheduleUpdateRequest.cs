@@ -1,12 +1,14 @@
-﻿namespace RoboClearingApi.Models.Requests;
+﻿using RoboClearingApi.Models.Domain;
+
+namespace RoboClearingApi.Models.Requests;
 
 public class ScheduleUpdateRequest
 {
     public int Id { get; set; }
-    public int RoomId { get; set; }
-    public int RobotId { get; set; }
-    public int TypeOfClearingId { get; set; }
-    public List<int> WeekDaysId { get; set; }
-    public TimeOnly StartClearing { get; set; }
-    public TimeOnly EndClearing { get; set; }
+    public Room Room { get; set; } = null!;
+    public Robot Robot { get; set; } = null!;
+    public TypeOfClearing Type { get; set; }
+    public List<WeekDay> WeekDays{ get; set; } = null!;
+    public TimeOnly Start { get; set; }
+    public TimeOnly End { get; set; }
 }

@@ -39,12 +39,12 @@ public class ScheduleRepository : IScheduleRepository
     {
         var check = await _dbContext.Schedules.FindAsync(schedule.Id) ??
                     throw new Exception($"id:{schedule.Id} Not Found");
-        check.RoomId = schedule.RoomId;
-        check.RobotId = schedule.RobotId;
-        check.TypeOfClearingId = schedule.TypeOfClearingId;
-        check.WeekDaysId = schedule.WeekDaysId;
-        check.StartClearing = schedule.StartClearing;
-        check.EndClearing = schedule.EndClearing;
+        check.Room = schedule.Room;
+        check.Robot = schedule.Robot;
+        check.Type = schedule.Type;
+        check.WeekDays = schedule.WeekDays;
+        check.Start = schedule.Start;
+        check.End = schedule.End;
 
         return await _dbContext.SaveChangesAsync();
     }

@@ -2,12 +2,10 @@
 
 namespace RoboClearingApi.Models.Domain
 {
-    public class RoboStatus
+    public enum RoboStatus
     {
-        [Key]
-        public int Id { get; set; }
-        public string Title { get; set; }
-
-        public virtual List<Robot>? Robots { get; set; }
+        Connecting,
+        Waiting,
+        Working
     }
 }

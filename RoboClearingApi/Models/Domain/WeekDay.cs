@@ -2,12 +2,14 @@
 
 namespace RoboClearingApi.Models.Domain
 {
-    public class WeekDay
+    public enum WeekDay
     {
-        [Key]
-        public int Id { get; set; }
-        public string Day { get; set; }
-
-        public virtual List<Schedule>? Schedules { get; set; }
+        Monday = 1,
+        Tuesday = 2,
+        Wednesday = 3,
+        Thursday = 4,
+        Friday = 5,
+        Saturday = 6,
+        Sunday = 7
     }
 }
