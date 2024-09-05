@@ -2,12 +2,16 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RoboClearingApp.RobotPage"
-             Title="RobotPage">
-    <VerticalStackLayout Padding="20">
+             Title="ROBOTS">
 
-        <HorizontalStackLayout Padding="10" HorizontalOptions="Center" Spacing="120">
+    <VerticalStackLayout Padding="10"
+                         BackgroundColor="#151719">
+
+        <HorizontalStackLayout Margin="0,30,0,0" Spacing="120" HorizontalOptions="Center">
             <Label 
-            Text="ROBOTS:"
+            Text="All robots:"
+                TextColor="Silver"
+                FontAttributes="Bold"
             VerticalOptions="Center" 
             FontSize="32"
             HorizontalOptions="Center" />
@@ -17,49 +21,57 @@
             Clicked="GetAllBtn"/>
         </HorizontalStackLayout>
 
-        <Grid Margin="50" ColumnSpacing="10" Padding="10" HorizontalOptions="Center">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="80"/>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" Text="Id"/>
-            <Label Grid.Column="1" Text="StatusId"/>
-            <Label Grid.Column="2" Text="Model"/>
-            <Label Grid.Column="3" Text="Name"/>
-        </Grid>
 
-        <ListView HorizontalOptions="Center"
+        <Frame BackgroundColor="#151719" Margin="20" HeightRequest="400" WidthRequest="500">
+            <ListView Margin="10"  HorizontalOptions="Center"
         x:Name="listView"
         ItemsSource="{Binding RobotResponce}"
         ItemSelected="robot_ItemSelected">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <ViewCell.View>
-                            <Grid ColumnSpacing="10" Padding="10" HorizontalOptions="Center">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="50"/>
-                                    <ColumnDefinition Width="80"/>
-                                    <ColumnDefinition Width="100"/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Text="{Binding Id}"/>
-                                <Label Grid.Column="1" Text="{Binding Status}"/>
-                                <Label Grid.Column="2" Text="{Binding Model}"/>
-                                <Label Grid.Column="3" Text="{Binding Name}"/>
-                            </Grid>
-                        </ViewCell.View>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                <ListView.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label FontSize="20" TextColor="Sienna" Grid.Column="0" Text="Id"/>
+                        <Label FontSize="20" TextColor="Sienna" Grid.Column="1" Text="StatusId"/>
+                        <Label FontSize="20" TextColor="Sienna" Grid.Column="2" Text="Model"/>
+                        <Label FontSize="20" TextColor="Sienna" Grid.Column="3" Text="Name"/>
+                    </Grid>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Margin="0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="120"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label FontSize="20" TextColor="Silver" Grid.Column="0" Text="{Binding Id}"/>
+                                    <Label FontSize="20" TextColor="Silver" Grid.Column="1" Text="{Binding Status}"/>
+                                    <Label FontSize="20" TextColor="Silver" Grid.Column="2" Text="{Binding Model}"/>
+                                    <Label FontSize="20" TextColor="Silver" Grid.Column="3" Text="{Binding Name}"/>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
-        <HorizontalStackLayout Margin="0,100,0,0" HorizontalOptions="Center" Spacing="180">
-            <Button Text="update" Clicked="UpdateBtn"/>
+        </Frame>
+
+        <HorizontalStackLayout Margin="10"  HorizontalOptions="Center" Spacing="180">
+            <Button Text="update/delete" Clicked="UpdateBtn"/>
             <Button Text="create" Clicked="CreateBtn"/>
         </HorizontalStackLayout>
+        <Label Margin="10"
+            x:Name="selectedLabel"
+            TextColor="Fuchsia"/>
 
     </VerticalStackLayout>
 </ContentPage>
