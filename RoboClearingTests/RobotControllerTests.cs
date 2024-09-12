@@ -44,4 +44,16 @@ public class RobotControllerTests
         Assert.IsAssignableFrom<int>(((OkObjectResult)answerActionResult.Result).Value);
         _mockRobotRepository.Verify(repository => repository.Add(It.IsNotNull<Robot>()), Times.AtLeastOnce());
     }
+    [Fact]
+    public async void GetByIdTest()
+    {
+        var robot = new Robot();
+        _mockRobotRepository.Setup(repository => repository.GetById(1)).ReturnsAsync(robot);
+
+        var robotsActionResult = await _robotController.GetById(1);
+
+        Assert.IsType<OkObjectResult>(robotsActionResult.Result);
+        Assert.IsAssignableFrom<RobotResponce>(((OkObjectResult)robotsActionResult.Result).Value);
+        _mockRobotRepository.Verify(repository => repository.GetById(1), Times.AtLeastOnce);
+    }
 }

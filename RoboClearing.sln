@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoboClearingClient", "RoboC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoboClearingApp", "RoboClearingApp\RoboClearingApp.csproj", "{412C0C48-D5A5-4181-BBE2-EE92324E9D39}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoboClearingTests", "RoboClearingTests\RoboClearingTests.csproj", "{E70019BB-FB59-4D51-955E-037B4003D433}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{412C0C48-D5A5-4181-BBE2-EE92324E9D39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{412C0C48-D5A5-4181-BBE2-EE92324E9D39}.Release|Any CPU.Build.0 = Release|Any CPU
 		{412C0C48-D5A5-4181-BBE2-EE92324E9D39}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{E70019BB-FB59-4D51-955E-037B4003D433}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E70019BB-FB59-4D51-955E-037B4003D433}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E70019BB-FB59-4D51-955E-037B4003D433}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E70019BB-FB59-4D51-955E-037B4003D433}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

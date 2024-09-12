@@ -1,4 +1,6 @@
-﻿namespace RoboClearingApp
+﻿using Microsoft.Maui.Controls;
+
+namespace RoboClearingApp
 {
     public partial class App : Application
     {
